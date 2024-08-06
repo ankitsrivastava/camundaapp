@@ -65,7 +65,9 @@ This project demonstrates how to create a BPMN process model using Camunda BPMN 
 1. Save the BPMN diagram.
 2. Deploy the process model to your Camunda Platform instance.
 
-### BPMN XML
+### Final Process model and BPMN XML
+
+![image](https://github.com/user-attachments/assets/6fcbbe7c-bbae-4e15-ad04-cccbf052da3a)
 
 You can find the generated BPMN XML [here](https://github.com/ankitsrivastava/camundaapp/blob/master/src/main/resources/random-animal.bpmn).
 
@@ -118,9 +120,9 @@ client.newCreateInstanceCommand()
 
 A job worker is a service capable of performing a particular task in a process. Each time such a task needs to be performed, this is represented by a job.
 
-You will need to annotate your method with @JobWorker and type should be provided to refer to the task for which the job needs to be defined. You can write your business logic to execute. Please refer AnimalJobWorker.
+You will need to annotate your method with @JobWorker and type should be provided to refer to the task for which the job needs to be defined. You can write your business logic to execute. Please refer [AnimalJobWorker](https://github.com/ankitsrivastava/camundaapp/blob/master/src/main/java/com/ankit/camunda/work/assignment/AnimalWorker.java).
 
 ```
 @JobWorker(type = "animalselect")
 ```
-** Note: As I used Rest Outbound Connector, I was not able to find out the type field so was not able to reference the job worker.**
+** Note: As I used Rest Outbound Connector, I was not able to find the type field so was not able to reference the job worker.**
