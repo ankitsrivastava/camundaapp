@@ -98,16 +98,19 @@ I added dependencies related to Zeebe client API into pom.xml (Using JDK 17, so 
 
 Use the @Deployment annotation:
 
+```
 @SpringBootApplication
 @Deployment(resources = "classpath:random-animal.bpmn")
 public class AssignmentApplication{
+```
 
 ## Start a process instance of the Camunda Process
 I included this logic under the REST endpoint so that the process can be started when the endpoint gets hit.
 
+```
 client.newCreateInstanceCommand() 
         .bpmnProcessId("random-animal") 
         .latestVersion() 
         .variables(variables) 
         .send().join();
-
+```
