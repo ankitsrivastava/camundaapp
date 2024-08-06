@@ -205,3 +205,6 @@ When you containerize your application, it can run locally on every machine that
 
 These properties can be overridden at runtime using environment variables, which Spring Boot automatically maps to properties. These environment variables can be changed at the container level and do not require re-building the application.
 
+# A small architectural diagram that shows how these components interact with each other
+
+![image](https://github.com/user-attachments/assets/5633d143-3e31-4248-b800-22b7414ad977)
