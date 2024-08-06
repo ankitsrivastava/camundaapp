@@ -116,7 +116,7 @@ client.newCreateInstanceCommand()
         .variables(variables) 
         .send().join();
 ```
-# Implements a Job worker
+# Implement a Job worker
 
 A job worker is a service capable of performing a particular task in a process. Each time such a task needs to be performed, this is represented by a job.
 
@@ -126,3 +126,42 @@ You will need to annotate your method with @JobWorker and type should be provide
 @JobWorker(type = "animalselect")
 ```
 ** Note: As I used Rest Outbound Connector, I was not able to find the type field so was not able to reference the job worker.**
+
+# Add automated tests
+
+I used the Zeebe Process Test and included dependency in pom.xml. This project allows you to unit test your Camunda Platform 8 BPMN processes. It will start a Zeebe test engine and provide you with a set of assertions you can use to verify your process behaves as expected.
+
+This project provides different annotations and methods to apply automated tests for BPMN processes. Below are the examples of Tests for Deployment and Start process instance. You can refer to [AssignmentApplicationTests.java](https://github.com/ankitsrivastava/camundaapp/blob/master/src/test/java/com/ankit/camunda/work/assignment/AssignmentApplicationTests.java)
+
+```
+@Test
+	public void testDeployment() {
+		//When
+		DeploymentEvent event = client.newDeployResourceCommand()
+				.addResourceFromClasspath("random-animal.bpmn")
+				.send()
+				.join();
+
+		//Then
+		BpmnAssert.assertThat(event);
+	}
+```
+
+```
+@Test
+	public void testProcessInstanceStart(){
+		//Given
+		initDeployment();
+
+		//When
+		ProcessInstanceEvent event = client.newCreateInstanceCommand()
+				.bpmnProcessId("random-application")
+				.latestVersion()
+				.send()
+				.join();
+
+		//Then
+		ProcessInstanceAssert assertions = BpmnAssert.assertThat(event);
+		assertions.hasPassedElement("random-animal");
+	}
+```
