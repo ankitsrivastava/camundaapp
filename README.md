@@ -198,3 +198,10 @@ Run the Docker container from the image you just built:
 docker run -p 8080:8080 camunda-client-app
 ```
 This command maps port 8080 of the Docker container to port 8080 on your host machine, allowing you to access your Spring Boot application at http://localhost:8080.
+
+# Add a setup to make the app run locally on every machine
+
+When you containerize your application, it can run locally on every machine that has an engine installed such as Docker. However there are a few property changes needed, remember clientID, clusterID, and secret defined in application.properties which need to be changed based on the host environment. If you need to build an app every time for such changes, it will be time-consuming. We should be able to provide provisions for such changes at the container level.
+
+These properties can be overridden at runtime using environment variables, which Spring Boot automatically maps to properties. These environment variables can be changed at the container level and do not require re-building the application.
+
