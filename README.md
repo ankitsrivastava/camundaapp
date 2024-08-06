@@ -77,11 +77,11 @@ I used [Spring Initializer](https://start.spring.io) to build a Spring boot app 
 
 I added dependencies related to Zeebe client API into pom.xml (Using JDK 17, so dependencies need to be compatible with the JDK version)
 
-      <dependency>
-      			<groupId>io.camunda</groupId>
-      			<artifactId>zeebe-client-java</artifactId>
-      			<version>${zeebe.version}</version>
-      </dependency>
+    <dependency>
+      	<groupId>io.camunda</groupId>
+      	<artifactId>zeebe-client-java</artifactId>
+      	<version>${zeebe.version}</version>
+    </dependency>
 		<dependency>
 		    <groupId>io.camunda</groupId>
 		    <artifactId>spring-zeebe-starter</artifactId>
@@ -93,3 +93,21 @@ I added dependencies related to Zeebe client API into pom.xml (Using JDK 17, so 
   			<version>1.3.0</version>
   			<scope>test</scope>
 		</dependency>
+
+## Deploy process models
+
+Use the @Deployment annotation:
+
+@SpringBootApplication
+@Deployment(resources = "classpath:random-animal.bpmn")
+public class AssignmentApplication{
+
+## Start a process instance of the Camunda Process
+I included this logic under the REST endpoint so that the process can be started when the endpoint gets hit.
+
+client.newCreateInstanceCommand() 
+        .bpmnProcessId("random-animal") 
+        .latestVersion() 
+        .variables(variables) 
+        .send().join();
+
