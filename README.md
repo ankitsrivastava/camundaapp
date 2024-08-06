@@ -69,4 +69,27 @@ This project demonstrates how to create a BPMN process model using Camunda BPMN 
 
 You can find the generated BPMN XML [here](https://github.com/ankitsrivastava/camundaapp/blob/master/src/main/resources/random-animal.bpmn).
 
+# Spring boot client App
 
+I used [Spring Initializer](https://start.spring.io) to build a Spring boot app with dependencies such as JPA, Database, etc.
+
+<img width="1261" alt="Screenshot 2024-08-06 at 9 46 51 AM" src="https://github.com/user-attachments/assets/d8af442b-5b41-4a46-91a5-d84f43736145">
+
+I added dependencies related to Zeebe client API into pom.xml (Using JDK 17, so dependencies need to be compatible with the JDK version)
+
+      <dependency>
+      			<groupId>io.camunda</groupId>
+      			<artifactId>zeebe-client-java</artifactId>
+      			<version>${zeebe.version}</version>
+      </dependency>
+		<dependency>
+		    <groupId>io.camunda</groupId>
+		    <artifactId>spring-zeebe-starter</artifactId>
+		    <version>${zeebe.version}</version>
+		</dependency>
+		<dependency>
+  			<groupId>io.camunda</groupId>
+  			<artifactId>zeebe-process-test</artifactId>
+  			<version>1.3.0</version>
+  			<scope>test</scope>
+		</dependency>
