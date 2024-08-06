@@ -114,3 +114,13 @@ client.newCreateInstanceCommand()
         .variables(variables) 
         .send().join();
 ```
+# Implements a Job worker
+
+A job worker is a service capable of performing a particular task in a process. Each time such a task needs to be performed, this is represented by a job.
+
+You will need to annotate your method with @JobWorker and type should be provided to refer to the task for which the job needs to be defined. You can write your business logic to execute. Please refer AnimalJobWorker.
+
+```
+@JobWorker(type = "animalselect")
+```
+** Note: As I used Rest Outbound Connector, I was not able to find out the type field so was not able to reference the job worker.**
