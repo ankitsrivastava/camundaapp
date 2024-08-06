@@ -1,6 +1,6 @@
-# Fetch Animal Picture Process Model
+This project demonstrates how to create a BPMN process model using Camunda BPMN Modeler that fetches a picture based on a user’s selection (cat, dog, or bear). I used Camunda SaaS for this exercise. I also built a spring boot client app that will deploy the process model to a Camunda installation and will include Job worker and test classes.
 
-This project demonstrates how to create a BPMN process model using Camunda BPMN Modeler that fetches a picture based on a user’s selection (cat, dog, or bear). I used Camunda SaaS for this exercise.
+# Deploying a BPMN Process Model to Camunda 8
 
 ## Prerequisites
 
@@ -68,3 +68,5 @@ This project demonstrates how to create a BPMN process model using Camunda BPMN 
 ### BPMN XML
 
 You can find the generated BPMN XML [here](https://github.com/ankitsrivastava/camundaapp/blob/master/src/main/resources/random-animal.bpmn).
+
+
