@@ -185,3 +185,16 @@ EXPOSE 8080
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
+You will need to run ```mvn package``` to make sure the target jar is available.
+
+## Build the Docker Image
+Build the Docker image using the Dockerfile:
+```
+docker build -t camunda-client-app .
+```
+##  Run the Docker Container
+Run the Docker container from the image you just built:
+```
+docker run -p 8080:8080 camunda-client-app
+```
+This command maps port 8080 of the Docker container to port 8080 on your host machine, allowing you to access your Spring Boot application at http://localhost:8080.
